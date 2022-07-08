@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>gauge.js</title>
+  <meta name="description" content="100% native and cool looking animated JavaScript/CoffeeScript gauge">
+  <meta name="viewport" content="width=1024, maximum-scale=1">
+ 
+
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="dist/gauge.js"></script>
+
+
+
+<div class="row">
+  
+  <div class="col-lg-6 col-xl-3">
+    <div class="card">
+      <div class="card-body p=0" dir="ltr" style="position: relative">
+
+    <div id="preview-textfield"></div>
+    <canvas id="demo" class="text-center"></canvas>
+
+
+    <script>
+      let opts = {
+        angle: -0.25,
+          lineWidth: 0.2,
+          radiusScale:0.9,
+          pointer: {
+            length: 0.6,
+            strokeWidth: 0.05,
+            color: '#000000'
+          },
+          staticLabels: {
+            font: "10px sans-serif",
+            labels: [200, 500, 2100, 2800],
+            fractionDigits: 0
+          },
+          staticZones: [
+            {strokeStyle: "#F03E3E", min: 0, max: 200},
+            {strokeStyle: "#FFDD00", min: 200, max: 500},
+            {strokeStyle: "#30B32D", min: 500, max: 2100},
+            {strokeStyle: "#FFDD00", min: 2100, max: 2800},
+            {strokeStyle: "#F03E3E", min: 2800, max: 3000}
+          ],
+          limitMax: false,
+          limitMin: false,
+          highDpiSupport: true
+    };
+    let target = document.getElementById('demo'); 
+    let gauge = new Gauge(target).setOptions(opts);
+    </script>
+
+    <script>
+      document.getElementById("preview-textfield").className = "preview-textfield";
+    gauge.setTextField(document.getElementById("preview-textfield"));
+
+    gauge.maxValue = 3000;
+    gauge.setMinValue(0); 
+    gauge.set(2000);
+
+    gauge.animationSpeed = 32
+
+
+    </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
